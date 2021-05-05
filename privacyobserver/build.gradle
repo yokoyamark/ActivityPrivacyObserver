@@ -6,7 +6,7 @@ plugins {
 }
 
 // for JitPack
-//group = 'com.github.yokoyamark'
+group = 'com.github.yokoyamark.ActivityPrivacyObserver'
 
 android {
     compileSdkVersion 30
