@@ -1,4 +1,4 @@
-package com.yokoyamark.privacyobserver
+package com.yokoyamark.sampleactivityprivacyobserver
 
 import org.junit.Test
 

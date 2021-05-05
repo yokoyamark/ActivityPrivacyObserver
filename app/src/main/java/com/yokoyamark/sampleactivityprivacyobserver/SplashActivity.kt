@@ -1,14 +1,11 @@
-package com.yokoyamark.activityprivacyobserver
+package com.yokoyamark.sampleactivityprivacyobserver
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -26,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         window.insetsController?.systemBarsBehavior =
             WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
-        GlobalScope.launch(Dispatchers.Default) {
+        CoroutineScope(Dispatchers.Default).launch {
             delay(1000)
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         }

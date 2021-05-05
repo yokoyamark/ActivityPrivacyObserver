@@ -1,4 +1,4 @@
-package com.yokoyamark.privacyobserver
+package com.yokoyamark.activityprivacyobserver
 
 import android.R
 import android.app.Activity

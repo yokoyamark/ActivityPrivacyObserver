@@ -1,8 +1,8 @@
-package com.yokoyamark.activityprivacyobserver
+package com.yokoyamark.sampleactivityprivacyobserver
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.yokoyamark.privacyobserver.PrivacyObserver
+import com.yokoyamark.activityprivacyobserver.PrivacyObserver
 
 class MainActivity : AppCompatActivity() {
     lateinit var privacyObserver: PrivacyObserver
