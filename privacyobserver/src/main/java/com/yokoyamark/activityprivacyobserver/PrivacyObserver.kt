@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import androidx.lifecycle.OnLifecycleEvent
  * @param layoutResID layout resource id for privacy
  */
 class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
+    private val tag: String = this::class.java.simpleName
     private var context: Context? = null
     private var privacyView: View? = null
     private var backgroundReceiver: BroadcastReceiver? = null
@@ -60,7 +62,7 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        println("onStart")
+        Log.d(tag, "Lifecycle.Event.onStart")
         registerReceiver()
     }
 
@@ -70,7 +72,7 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onResume() {
-        println("onResume")
+        Log.d(tag, "Lifecycle.Event.onResume")
         gone()
     }
 
@@ -82,7 +84,7 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
      * at Activity#onUserInteraction
      */
     fun onUserInteraction() {
-        println("onUserInteraction")
+        Log.d(tag, "Lifecycle.Event.onUserInteraction")
         visible()
     }
 
@@ -92,7 +94,7 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
      * at Activity#onUserLeaveHint
      */
     fun onUserLeaveHint() {
-        println("onUserLeaveHint")
+        Log.d(tag, "Lifecycle.Event.onUserLeaveHint")
         visible()
     }
 
@@ -103,7 +105,7 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun onPause() {
-        println("onPause")
+        Log.d(tag, "Lifecycle.Event.onPause")
         unregisterReceiver()
     }
 
@@ -148,8 +150,9 @@ class PrivacyObserver(context: Context, layoutResID: Int) : LifecycleObserver {
     }
 
     class BackgroundReceiver(private val privacyObserver: PrivacyObserver) : BroadcastReceiver() {
+        private val tag: String = this::class.java.simpleName
         override fun onReceive(context: Context?, intent: Intent?) {
-            println("BackgroundReceiver_onReceive")
+            Log.d(tag, "BackgroundReceiver_onReceive")
             privacyObserver.visible()
         }
     }
